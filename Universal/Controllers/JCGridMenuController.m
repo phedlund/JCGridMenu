@@ -31,6 +31,7 @@
         frame.size.height = frame.size.height +44;
         frame.origin.y = frame.origin.y -22;
         [self setView:[[JCUIViewTransparent alloc] initWithFrame:frame]];
+        self.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
         [self.view setClipsToBounds:YES];
     }
     
@@ -51,7 +52,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES; //(interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
 }
 
 #pragma mark - Open and Close
@@ -161,11 +166,15 @@
                     [[_gridCells objectAtIndex:i] setAlpha:1.0];
                     
                     if (i==indexRow) {
-                        [[_gridCells objectAtIndex:i] expand:indexRow];
+                        if (![selected isMoreButton]) {
+                            [[_gridCells objectAtIndex:i] expand:indexRow];
+                        }
                         [self.view bringSubviewToFront:[_gridCells objectAtIndex:i]];
                         isSeperate = YES;
                     } else {
-                        [[_gridCells objectAtIndex:i] setAlpha:[[_rows objectAtIndex:indexRow] hideAlpha]];
+                        if (![selected isMoreButton]) {
+                            [[_gridCells objectAtIndex:i] setAlpha:[[_rows objectAtIndex:indexRow] hideAlpha]];
+                        }
                     }
                     
                 }
@@ -192,8 +201,12 @@
                     }
                     
                 }
-                
-                _rowSelected = indexRow;
+                if (![selected isMoreButton]) {
+                    _rowSelected = indexRow;
+                }
+                if ([self.delegate respondsToSelector:@selector(jcDidSelectGridMenuRow:indexRow:isExpand:)]) {
+                    [self.delegate jcDidSelectGridMenuRow:_tag indexRow:indexRow isExpand:YES];
+                }
             }
             
         }

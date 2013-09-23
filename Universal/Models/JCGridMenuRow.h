@@ -22,6 +22,7 @@
     BOOL isExpanded;
     NSMutableArray *columns;
     BOOL isModal;
+    BOOL isMoreButton;
     CGFloat hideAlpha;
 }
 
@@ -32,6 +33,7 @@
 @property (nonatomic, strong) NSMutableArray *columns;
 @property BOOL hideOnExpand;
 @property BOOL isModal;
+@property BOOL isMoreButton;
 @property CGFloat hideAlpha;
 
 #pragma mark - Initialisation Options

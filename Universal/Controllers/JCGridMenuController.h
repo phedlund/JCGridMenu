@@ -21,6 +21,7 @@
 @protocol JCGridMenuControllerDelegate <NSObject>
 @optional
 - (void)jcGridMenuRowSelected:(NSInteger)tag indexRow:(NSInteger)indexRow isExpand:(BOOL)isExpand;
+- (void)jcDidSelectGridMenuRow:(NSInteger)tag indexRow:(NSInteger)indexRow isExpand:(BOOL)isExpand;
 - (void)jcGridMenuColumnSelected:(NSInteger)tag indexRow:(NSInteger)indexRow indexColumn:(NSInteger)indexColumn;
 @end
 

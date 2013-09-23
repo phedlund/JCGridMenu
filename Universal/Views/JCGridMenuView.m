@@ -86,7 +86,7 @@
                         options: UIViewAnimationCurveEaseIn
                      animations:^{
                          [self.layer setPosition:CGPointMake(xStart+44, yStart)];
-                         [_button setSelected:[_row isSelected]];
+                         [_button setSelected:[_row.button isSelected]];
                          [_button setTag:_rowOrder];
                          [_button addTarget:self action:@selector(jcGridMenuViewRowSelected:) forControlEvents:UIControlEventTouchUpInside];
                          [self addSubview:_button];

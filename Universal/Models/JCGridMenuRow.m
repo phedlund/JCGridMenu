@@ -16,6 +16,7 @@
 @synthesize hideOnExpand = _hideOnExpand;
 @synthesize hideAlpha = _hideAlpha;
 @synthesize isModal = _isModal;
+@synthesize isMoreButton = _isMoreButton;
 
 - (id)init
 {
@@ -30,6 +31,7 @@
         _columns = [[NSMutableArray alloc] init];
         _button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         _hideAlpha = 0.3;
+        _isMoreButton = NO;
     }
     
     return self;
